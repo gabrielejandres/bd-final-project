@@ -1,0 +1,128 @@
+:root{
+  --color-brand-primary: #510F60;
+  --color-brand-secondary: #F17E50;
+  --color-neutral-lightest: #F2F2F2;
+}
+
+.main-page{
+  background-image: radial-gradient(circle, #81249C, var(--color-brand-primary));
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img{
+  width: auto;
+  height: 10vh;
+}
+
+.container{
+  margin-top: 20vh;
+  width: 35vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--color-neutral-lightest);
+  border-radius: 20px;
+  box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
+}
+
+.top{
+  display: flex;
+  justify-content: space-between
+}
+
+.faq{
+  font-size: 40px;
+  cursor: pointer;
+  width: auto;
+  height: 40px;
+  margin-left: 10vw;
+}
+
+.access-area{
+  display: flex;
+  width:35vw;
+  justify-content: center;
+}
+
+.user-interaction{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1.5vw;
+}
+
+.profile{
+  width: auto;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.profile img{
+  height: 80px;
+  width: auto;
+}
+
+.input{
+  border-radius: 10px;
+  height: 24px;
+  margin-bottom: 10px;
+  border-color: rgba(133,133,133)
+}
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 35px;
+  background-color: var(--color-brand-secondary);
+  cursor: pointer;
+  border-radius:30px;
+}
+
+.container-footer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-icons{
+  display: flex;
+  justify-content: center;
+}
+
+.login-icons img{
+  width: auto;
+  height: 25px;
+  padding: 0.5vw;
+}
+
+.text-login{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.text-login hr{
+  width: 6vw;
+  border: 0;
+  height: 1.90px;
+  background-color: grey;
+  margin-top: 1.65vh;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
