@@ -1,13 +1,28 @@
-import {FaQuestionCircle} from 'react-icons/fa'
 import './style.css'
-import {CgProfile} from 'react-icons/cg'
 import pfIcon from '../../assets/img/woman.png';
 import fbLogo from '../../assets/img/facebook.png';
 import igLogo from '../../assets/img/instagram.png';
 import ttLogo from '../../assets/img/twitter.png';
 import Logo from '../../assets/img/Logo.svg';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 export default function Login(){
+
+  const {handleSubmit, register} = useForm();
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    console.log(data);
+    try {
+      data.username != "" ? navigate('/') : console.log('nao')
+    } catch (error) {
+      
+    }
+  };
+
   return(
     <div className="main-page">
         <div className="container">
@@ -19,16 +34,16 @@ export default function Login(){
                   <img src={pfIcon} />
               </div>
             <div className="user-interaction">
-              <div className="username-input">
-                <form>
-                    <input placeholder='username' className="input"></input>
-                </form>
-              </div>
-              <div className="continue-button">
-                <div className="button">
-                  Continuar
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="username-input">
+                      <input placeholder='username' className="input" name='username'{...register('username')}/>
                 </div>
-              </div>
+                <div className="continue-button">
+                  <button className="button" type="submit">
+                    Continuar
+                  </button>
+                </div>
+              </form>
             </div>
             </div>
             <div className="container-footer">
