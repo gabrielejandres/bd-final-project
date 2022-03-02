@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\ActorController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -40,3 +41,10 @@ Route::get('/director', [DirectorController::class, 'index']);
 Route::get('/director/{id}', [DirectorController::class, 'show']);
 Route::put('/director/{id}', [DirectorController::class, 'update']);
 Route::delete('/director/{id}', [DirectorController::class, 'delete']);
+
+// Actor
+Route::post('/actor', [ActorController::class, 'create']);
+Route::get('/actor', [ActorController::class, 'index']);
+Route::get('/actor/{id}', [ActorController::class, 'show']);
+Route::put('/actor/{id}', [ActorController::class, 'update']);
+Route::delete('/actor/{id}', [ActorController::class, 'delete']);
