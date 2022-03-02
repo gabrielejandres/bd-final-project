@@ -1,0 +1,43 @@
+:root{
+    --color-brand-primary: #510F60;
+    --color-brand-secondary: #F17E50;
+    --color-neutral-lightest: #F2F2F2;
+  }
+
+.container{
+    margin-top: 10vh;
+    width: 35vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--color-neutral-lightest);
+    border-radius: 20px;
+    box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
+}
+
+.container-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-top: 50px;
+}
+
+.buttons-area{
+    display: flex;
+    flex-direction: column;
+    height: 26vh;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.logo {
+    width: 35vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

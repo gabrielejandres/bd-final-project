@@ -6,9 +6,7 @@ import ttLogo from '../../assets/img/twitter.png';
 import Logo from '../../assets/img/Logo.svg';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-
-
-
+import Button from '../../components/Button/index.jsx';
 
 export default function Login(){
 
@@ -25,7 +23,7 @@ export default function Login(){
 
   return(
     <div className="main-page">
-        <div className="container">
+        <div className="container-login">
             <div className="logo">
               <img src={Logo} />
             </div>
@@ -39,9 +37,10 @@ export default function Login(){
                       <input placeholder='username' className="input" name='username'{...register('username')}/>
                 </div>
                 <div className="continue-button">
-                  <button className="button" type="submit">
-                    Continuar
-                  </button>
+                  <Button 
+                    label={'Continuar'}
+                    width={'100px'}
+                  />
                 </div>
               </form>
             </div>
