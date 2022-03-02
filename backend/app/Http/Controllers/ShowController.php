@@ -20,13 +20,13 @@ class ShowController extends Controller
     }
 
     public function index(){
-    	$shows = Show::all(); 
+    	$shows = Show::with('countries')->get(); 
 
     	return response()->json($shows);
     }
 
     public function show($id){
-    	$show = Show::findOrFail($id);
+        $show = Show::with('countries')->where('id', $id)->first();
 
     	return response()->json($show);
     }
