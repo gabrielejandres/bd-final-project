@@ -18,9 +18,9 @@ class ActorController extends Controller
     }
 
     public function index(){
-    	$users = Actor::all(); 
+    	$actors = Actor::all(); 
 
-    	return response()->json($users);
+    	return response()->json($actors);
     }
 
     public function show($id){
