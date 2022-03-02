@@ -3,10 +3,10 @@ import pfIcon from '../../assets/img/woman.png';
 import fbLogo from '../../assets/img/facebook.png';
 import igLogo from '../../assets/img/instagram.png';
 import ttLogo from '../../assets/img/twitter.png';
-import Logo from '../../assets/img/Logo.svg';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/index.jsx';
+import Logo from '../../components/Logo/index.jsx';
 
 export default function Login(){
 
@@ -25,7 +25,7 @@ export default function Login(){
     <div className="main-page">
         <div className="container-login">
             <div className="logo">
-              <img src={Logo} />
+              <Logo/>
             </div>
             <div className="access-area">
               <div className="profile">
