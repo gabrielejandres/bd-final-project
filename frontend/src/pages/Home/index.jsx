@@ -1,6 +1,7 @@
 import './style.css'
 import Logo from '../../components/Logo/index.jsx';
 import Button from '../../components/Button/index.jsx';
+import HomeFooter from '../../components/Footer/Home/index.jsx';
 
 
 export default function Home(){
@@ -10,14 +11,15 @@ export default function Home(){
     <div className="container">
       <div className="container-content">
         <div className="logo">
-              <Logo/>
+            <Logo/>
         </div>
         <div className="buttons-area">
-          <Button label={'Jogar'} page={'jogar'} width={'175px'}/>
-          <Button label={'Ajuda'} page={'ajuda'} width={'175px'}/>
+          <Button label={'Jogar'} page={'play'} width={'175px'}/>
+          <Button label={'Ajuda'} page={'help'} width={'175px'}/>
           <Button label={'Ranking'} page={'ranking'} width={'175px'}/>
         </div>
       </div>
+      <HomeFooter/>
     </div>
   </div>
   )

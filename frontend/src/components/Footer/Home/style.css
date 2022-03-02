@@ -1,0 +1,22 @@
+.container-footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-footer{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.text-footer hr{
+    width: 6vw;
+    border: 0;
+    height: 1.90px;
+    background-color: grey;
+    margin-top: 1.65vh;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+}
