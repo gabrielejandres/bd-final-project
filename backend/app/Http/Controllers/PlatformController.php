@@ -17,9 +17,9 @@ class PlatformController extends Controller
     }
 
     public function index(){
-    	$platform = Platform::all(); 
+    	$platforms = Platform::all(); 
 
-    	return response()->json($platform);
+    	return response()->json($platforms);
     }
 
     public function show($id){

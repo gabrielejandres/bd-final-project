@@ -17,6 +17,7 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::put('/user/{id}', [UserController::class, 'update']);
 Route::delete('/user/{id}', [UserController::class, 'delete']);
+Route::get('/ranking', [UserController::class, 'ranking']);
 
 // Platform
 Route::post('/platform', [PlatformController::class, 'create']);

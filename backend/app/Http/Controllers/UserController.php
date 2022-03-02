@@ -17,9 +17,9 @@ class UserController extends Controller
     }
 
     public function index(){
-    	$user = User::all(); 
+    	$users = User::all(); 
 
-    	return response()->json($user);
+    	return response()->json($users);
     }
 
     public function show($id){
@@ -37,7 +37,7 @@ class UserController extends Controller
 
             if ($request->score)   
                 $user->score = $request->score;
-                
+
             $user->save(); 
             return response()->json($user); 
         } else {
@@ -49,5 +49,12 @@ class UserController extends Controller
     	User::destroy($id);
 
     	return response()->json(['Usuario deletado com sucesso']); 
+    }
+
+    public function ranking(){
+    	$users = User::orderByRaw('score DESC')
+                ->get();
+
+    	return response()->json($users);
     }
 }
