@@ -11,6 +11,7 @@ use App\Http\Controllers\ActorController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\SeriesController;
 
 // User
 Route::post('/user', [UserController::class, 'create']);
@@ -68,3 +69,10 @@ Route::get('/movie', [MovieController::class, 'index']);
 Route::get('/movie/{media_id}', [MovieController::class, 'show']);
 Route::put('/movie/{media_id}', [MovieController::class, 'update']);
 Route::delete('/movie/{media_id}', [MovieController::class, 'delete']);
+
+// Series
+Route::post('/series', [SeriesController::class, 'create']);
+Route::get('/series', [SeriesController::class, 'index']);
+Route::get('/series/{media_id}', [SeriesController::class, 'show']);
+Route::put('/series/{media_id}', [SeriesController::class, 'update']);
+Route::delete('/series/{media_id}', [SeriesController::class, 'delete']);
