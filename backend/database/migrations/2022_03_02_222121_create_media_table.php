@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->string('code', 2);
+        Schema::create('media', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('show_id')->nullable();
+            $table->year('release_year');
+            $table->enum('parental_rating', ['PG-13', 'TV-MA', 'R', 'TV-14', 'TV-PG']);
+            $table->longText('description');
             $table->timestamps();
-        });
-
-        Schema::table('countries', function (Blueprint $table) { 
-            $table->foreign('show_id')->references('id')->on('shows')->onDelete('cascade');
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('media');
     }
 };

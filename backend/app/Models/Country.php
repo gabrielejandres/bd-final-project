@@ -9,12 +9,11 @@ class Country extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = ['code', 'name', 'show_id'];
+    // protected $primaryKey = ['code', 'name', 'media_id'];
+    // public $incrementing = false;
 
-    public $incrementing = false;
-
-    public function show()
+    public function media()
     {
-        return this->belongsTo('App\Models\Show', 'show_id');
+        return this->belongsTo('App\Models\Media', 'media_id');
     }
 }

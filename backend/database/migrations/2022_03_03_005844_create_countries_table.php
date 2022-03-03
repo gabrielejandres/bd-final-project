@@ -13,23 +13,26 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shows', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
+            $table->string('code', 3);
             $table->string('name');
-            $table->year('release_year');
-            $table->enum('parental_rating', ['PG-13', 'TV-MA', 'R', 'TV-14', 'TV-PG']);
-            $table->longText('description');
+            $table->unsignedBigInteger('media_id')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('countries', function (Blueprint $table) { 
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations. 
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('shows');
+        Schema::dropIfExists('countries');
     }
 };

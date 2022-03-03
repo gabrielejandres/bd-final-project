@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlatformController;
-use App\Http\Controllers\GenderController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\ActorController;
-use App\Http\Controllers\ShowController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CountryController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -30,12 +30,12 @@ Route::get('/platform/{id}', [PlatformController::class, 'show']);
 Route::put('/platform/{id}', [PlatformController::class, 'update']);
 Route::delete('/platform/{id}', [PlatformController::class, 'delete']);
 
-// Gender
-Route::post('/gender', [GenderController::class, 'create']);
-Route::get('/gender', [GenderController::class, 'index']);
-Route::get('/gender/{id}', [GenderController::class, 'show']);
-Route::put('/gender/{id}', [GenderController::class, 'update']);
-Route::delete('/gender/{id}', [GenderController::class, 'delete']);
+// Genre
+Route::post('/genre', [GenreController::class, 'create']);
+Route::get('/genre', [GenreController::class, 'index']);
+Route::get('/genre/{id}', [GenreController::class, 'show']);
+Route::put('/genre/{id}', [GenreController::class, 'update']);
+Route::delete('/genre/{id}', [GenreController::class, 'delete']);
 
 // Director
 Route::post('/director', [DirectorController::class, 'create']);
@@ -51,12 +51,12 @@ Route::get('/actor/{id}', [ActorController::class, 'show']);
 Route::put('/actor/{id}', [ActorController::class, 'update']);
 Route::delete('/actor/{id}', [ActorController::class, 'delete']);
 
-// Show
-Route::post('/show', [ShowController::class, 'create']);
-Route::get('/show', [ShowController::class, 'index']);
-Route::get('/show/{id}', [ShowController::class, 'show']);
-Route::put('/show/{id}', [ShowController::class, 'update']);
-Route::delete('/show/{id}', [ShowController::class, 'delete']);
+// Media
+Route::post('/media', [MediaController::class, 'create']);
+Route::get('/media', [MediaController::class, 'index']);
+Route::get('/media/{id}', [MediaController::class, 'show']);
+Route::put('/media/{id}', [MediaController::class, 'update']);
+Route::delete('/media/{id}', [MediaController::class, 'delete']);
 
 // Country
 Route::post('/country', [CountryController::class, 'create']);

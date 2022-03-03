@@ -12,7 +12,7 @@ class CountryController extends Controller
 
         $country->code = $request->code;
     	$country->name = $request->name;
-        $country->show_id = $request->show_id;
+        $country->media_id = $request->media_id;
     	$country->save(); 
 
     	return response()->json($country); 
@@ -24,7 +24,7 @@ class CountryController extends Controller
     	return response()->json($countries);
     }
 
-    public function country($id){
+    public function show($id){
     	$country = Country::findOrFail($id);
 
     	return response()->json($country);
@@ -40,8 +40,8 @@ class CountryController extends Controller
             if ($request->code)   
                 $country->code = $request->code;
 
-            if ($request->show_id) 
-                $country->show_id = $request->show_id;
+            if ($request->media_id) 
+                $country->media_id = $request->media_id;
 
             $country->save(); 
             return response()->json($country); 
