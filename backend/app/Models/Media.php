@@ -13,4 +13,9 @@ class Media extends Model
     {
         return $this->hasMany('App\Models\Country');
     }
+
+    public function movies()
+    {
+        return $this->hasMany('App\Models\Movie');
+    }
 }

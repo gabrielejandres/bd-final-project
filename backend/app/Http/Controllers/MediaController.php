@@ -50,13 +50,13 @@ class MediaController extends Controller
             $media->save(); 
             return response()->json($media); 
         } else {
-            return response()->json(['Este media nao existe']);
+            return response()->json(['Esta midia nao existe']);
         }	
     }
 
     public function delete($id){
     	Media::destroy($id);
 
-    	return response()->json(['Media deletado com sucesso']); 
+    	return response()->json(['Midia deletada com sucesso']); 
     }
 }

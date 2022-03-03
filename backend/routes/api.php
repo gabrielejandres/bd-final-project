@@ -10,10 +10,7 @@ use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CountryController;
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+use App\Http\Controllers\MovieController;
 
 // User
 Route::post('/user', [UserController::class, 'create']);
@@ -64,3 +61,10 @@ Route::get('/country', [CountryController::class, 'index']);
 Route::get('/country/{id}', [CountryController::class, 'show']);
 Route::put('/country/{id}', [CountryController::class, 'update']);
 Route::delete('/country/{id}', [CountryController::class, 'delete']);
+
+// Movie
+Route::post('/movie', [MovieController::class, 'create']);
+Route::get('/movie', [MovieController::class, 'index']);
+Route::get('/movie/{media_id}', [MovieController::class, 'show']);
+Route::put('/movie/{media_id}', [MovieController::class, 'update']);
+Route::delete('/movie/{media_id}', [MovieController::class, 'delete']);
