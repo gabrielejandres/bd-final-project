@@ -5,9 +5,8 @@
   }
 
 .container{
-    margin-top: 10vh;
     width: 35vw;
-    height: 80vh;
+    height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +31,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 80px;
+    margin-top: 5.5vh;
 }
 
 .logo {
