@@ -1,0 +1,15 @@
+:root{
+    --color-brand-primary: #510F60;
+    --color-brand-secondary: #F17E50;
+    --color-neutral-lightest: #F2F2F2;
+  }
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    background-color: var(--color-brand-secondary);
+    cursor: pointer;
+    border-radius:30px;
+}
