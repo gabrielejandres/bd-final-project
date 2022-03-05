@@ -14,9 +14,9 @@ export default function Home(){
             <Logo/>
         </div>
         <div className="buttons-area">
-          <Button label={'Jogar'} page={'play'} width={'9.12vw'}/>
-          <Button label={'Ajuda'} page={'help'} width={'9.12vw'}/>
-          <Button label={'Ranking'} page={'ranking'} width={'9.12vw'}/>
+          <Button label={'JOGAR'} page={'play'} width={'12.12vw'}/>
+          <Button label={'AJUDA'} page={'help'} width={'12.12vw'}/>
+          <Button label={'RANKING'} page={'ranking'} width={'12.12vw'}/>
         </div>
       </div>
       <HomeFooter/>
