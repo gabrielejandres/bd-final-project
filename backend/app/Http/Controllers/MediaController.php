@@ -7,6 +7,8 @@ use App\Models\Media;
 
 // Many to many relationships
 use App\Models\Genre;
+use App\Models\Director;
+use App\Models\Actor;
 
 class MediaController extends Controller
 {
@@ -25,6 +27,8 @@ class MediaController extends Controller
     public function index(){
     	$medias = Media::with('countries')
                         ->with('genres')
+                        ->with('actors')
+                        ->with('directors')
                         ->get();
 
     	return response()->json($medias);
@@ -33,6 +37,8 @@ class MediaController extends Controller
     public function show($id){
         $media = Media::with('countries')
                         ->with('genres')
+                        ->with('actors')
+                        ->with('directors')
                         ->where('id', $id)
                         ->first();
 
@@ -77,5 +83,25 @@ class MediaController extends Controller
     	$media->save();
 
     	return response()->json(['Relação entre midia e genero criada com sucesso']);
+    }
+
+    public function createRelationshipWithDirector(Request $request){
+    	$media = Media::findOrFail($request->media_id);
+        $director = Director::find($request->director_id);
+
+    	$media->directors()->attach($director);
+    	$media->save();
+
+    	return response()->json(['Relação entre midia e diretor criada com sucesso']);
+    }
+
+    public function createRelationshipWithActor(Request $request){
+    	$media = Media::findOrFail($request->media_id);
+        $actor = Actor::find($request->actor_id);
+
+    	$media->actors()->attach($actor);
+    	$media->save();
+
+    	return response()->json(['Relação entre midia e ator criada com sucesso']);
     }
 }

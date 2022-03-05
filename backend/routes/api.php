@@ -79,3 +79,5 @@ Route::delete('/series/{media_id}', [SeriesController::class, 'delete']);
 
 // Many to many relationships
 Route::post('/media/genre', [MediaController::class, 'createRelationshipWithGenre']);
+Route::post('/media/director', [MediaController::class, 'createRelationshipWithDirector']);
+Route::post('/media/actor', [MediaController::class, 'createRelationshipWithActor']);
