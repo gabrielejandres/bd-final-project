@@ -81,3 +81,4 @@ Route::delete('/series/{media_id}', [SeriesController::class, 'delete']);
 Route::post('/media/genre', [MediaController::class, 'createRelationshipWithGenre']);
 Route::post('/media/director', [MediaController::class, 'createRelationshipWithDirector']);
 Route::post('/media/actor', [MediaController::class, 'createRelationshipWithActor']);
+Route::post('/media/platform', [MediaController::class, 'createRelationshipWithPlatform']);

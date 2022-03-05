@@ -30,6 +30,7 @@ class SeriesController extends Controller
             $s->genres = $media->genres;
             $s->actors = $media->actors;
             $s->directors = $media->directors;
+            $s->platforms = $media->platforms;
         }
 
         return response()->json($series);
@@ -45,6 +46,7 @@ class SeriesController extends Controller
         $series->genres = $media->genres;
         $series->actors = $media->actors;
         $series->directors = $media->directors;
+        $series->platforms = $media->platforms;
 
     	return response()->json($series);
     }

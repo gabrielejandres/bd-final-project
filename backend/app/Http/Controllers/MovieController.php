@@ -30,6 +30,7 @@ class MovieController extends Controller
             $movie->genres = $media->genres;
             $movie->actors = $media->actors;
             $movie->directors = $media->directors;
+            $movie->platforms = $media->platforms;
         }
 
     	return response()->json($movies);
@@ -45,6 +46,7 @@ class MovieController extends Controller
         $movie->genres = $media->genres;
         $movie->actors = $media->actors;
         $movie->directors = $media->directors;
+        $movie->platforms = $media->platforms;
 
     	return response()->json($movie);
     }

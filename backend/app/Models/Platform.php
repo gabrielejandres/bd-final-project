@@ -11,6 +11,6 @@ class Platform extends Model
 
     public function medias()
     {
-        return $this->belongsToMany('App\Models\Media');
+        return $this->belongsToMany('App\Models\Media')->withPivot('inclusion_date');;
     }
 }

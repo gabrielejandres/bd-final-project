@@ -41,4 +41,9 @@ class Media extends Model
     {
         return $this->belongsToMany('App\Models\Actor');
     }
+
+    public function platforms()
+    {
+        return $this->belongsToMany('App\Models\Platform')->withPivot('inclusion_date');
+    }
 }

@@ -9,6 +9,7 @@ use App\Models\Media;
 use App\Models\Genre;
 use App\Models\Director;
 use App\Models\Actor;
+use App\Models\Platform;
 
 class MediaController extends Controller
 {
@@ -77,7 +78,7 @@ class MediaController extends Controller
     // Relationship functions
     public function createRelationshipWithGenre(Request $request){
     	$media = Media::findOrFail($request->media_id);
-        $genre = Genre::find($request->genre_id);
+        $genre = Genre::findOrFail($request->genre_id);
 
     	$media->genres()->attach($genre);
     	$media->save();
@@ -87,7 +88,7 @@ class MediaController extends Controller
 
     public function createRelationshipWithDirector(Request $request){
     	$media = Media::findOrFail($request->media_id);
-        $director = Director::find($request->director_id);
+        $director = Director::findOrFail($request->director_id);
 
     	$media->directors()->attach($director);
     	$media->save();
@@ -97,11 +98,21 @@ class MediaController extends Controller
 
     public function createRelationshipWithActor(Request $request){
     	$media = Media::findOrFail($request->media_id);
-        $actor = Actor::find($request->actor_id);
+        $actor = Actor::findOrFail($request->actor_id);
 
     	$media->actors()->attach($actor);
     	$media->save();
 
     	return response()->json(['Relação entre midia e ator criada com sucesso']);
+    }
+
+    public function createRelationshipWithPlatform(Request $request){
+    	$media = Media::findOrFail($request->media_id);
+        $platform = Platform::findOrFail($request->platform_id);
+
+    	$media->platforms()->attach($platform, ['inclusion_date' => $request->inclusion_date]);
+    	$media->save();
+
+    	return response()->json(['Relação entre midia e plataforma criada com sucesso']);
     }
 }
