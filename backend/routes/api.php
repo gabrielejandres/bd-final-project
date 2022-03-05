@@ -76,3 +76,9 @@ Route::get('/series', [SeriesController::class, 'index']);
 Route::get('/series/{media_id}', [SeriesController::class, 'show']);
 Route::put('/series/{media_id}', [SeriesController::class, 'update']);
 Route::delete('/series/{media_id}', [SeriesController::class, 'delete']);
+
+// Many to many relationships
+Route::post('/media/genre', [MediaController::class, 'createRelationshipWithGenre']);
+Route::post('/media/director', [MediaController::class, 'createRelationshipWithDirector']);
+Route::post('/media/actor', [MediaController::class, 'createRelationshipWithActor']);
+Route::post('/media/platform', [MediaController::class, 'createRelationshipWithPlatform']);
