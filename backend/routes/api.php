@@ -76,3 +76,6 @@ Route::get('/series', [SeriesController::class, 'index']);
 Route::get('/series/{media_id}', [SeriesController::class, 'show']);
 Route::put('/series/{media_id}', [SeriesController::class, 'update']);
 Route::delete('/series/{media_id}', [SeriesController::class, 'delete']);
+
+// Many to many relationships
+Route::post('/media/genre', [MediaController::class, 'createRelationshipWithGenre']);

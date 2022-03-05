@@ -9,13 +9,26 @@ class Media extends Model
 {
     use HasFactory;
 
+    // Multivalued attribute
     public function countries()
     {
         return $this->hasMany('App\Models\Country');
     }
 
+    // Heritage
     public function movies()
     {
         return $this->hasMany('App\Models\Movie');
+    }
+
+    public function series()
+    {
+        return $this->hasMany('App\Models\Series');
+    }
+
+    // Many to many relationships
+    public function genres()
+    {
+        return $this->belongsToMany('App\Models\Genre');
     }
 }

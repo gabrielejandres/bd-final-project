@@ -15,19 +15,32 @@ class MovieController extends Controller
     	$movie = new Movie;
     	$movie->duration = $request->duration;
         $movie->media_id = $media->getData()->id;
-    	$movie->save(); 
+    	$movie->save();
 
-    	return response()->json($movie); 
+    	return $this->show($movie->media_id);
     }
 
     public function index(){
-    	$movies = Movie::with('media')->get(); ; 
+        $movies = Movie::join('media', 'id', '=', 'media_id')
+                        ->get();
+
+        foreach ($movies as $movie) {
+            $mediaController = new MediaController;
+            $media = $mediaController->show($movie->media_id)->original;
+            $movie->genres = $media->genres;
+        }
 
     	return response()->json($movies);
     }
 
     public function show($media_id){
-        $movie = Movie::with('media')->where('media_id', $media_id)->first();
+        $movie = Movie::where('media_id', $media_id)
+                        ->join('media', 'id', '=', 'media_id')
+                        ->first();
+
+        $mediaController = new MediaController;
+        $media = $mediaController->show($movie->media_id)->original;
+        $movie->genres = $media->genres;
 
     	return response()->json($movie);
     }
@@ -36,22 +49,22 @@ class MovieController extends Controller
     	$movie = Movie::where('media_id', $media_id)->first();
 
         if ($movie) {
-            if ($request->duration) 
+            if ($request->duration)
                 $movie->duration = $request->duration;
-            
-            if ($request->media_id) 
+
+            if ($request->media_id)
                 $movie->media_id = $request->media_id;
-            
+
             if ($request->name || $request->release_year || $request->parental_rating || $request->description) {
                 $mediaController = new MediaController;
                 $media = $mediaController->update($request, $media_id);
             }
 
-            $movie->save(); 
-            return $this->show($media->getData()->id); 
+            $movie->save();
+            return $this->show($media->getData()->id);
         } else {
             return response()->json(['Este filme nao existe']);
-        }	
+        }
     }
 
     public function delete($media_id){
@@ -59,6 +72,6 @@ class MovieController extends Controller
         $mediaController = new MediaController;
         $media = $mediaController->delete($media_id);
 
-    	return response()->json(['Filme deletado com sucesso']); 
+    	return response()->json(['Filme deletado com sucesso']);
     }
 }

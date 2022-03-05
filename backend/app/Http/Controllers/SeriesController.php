@@ -15,19 +15,32 @@ class SeriesController extends Controller
     	$series = new Series;
     	$series->num_seasons = $request->num_seasons;
         $series->media_id = $media->getData()->id;
-    	$series->save(); 
+    	$series->save();
 
-    	return response()->json($series); 
+    	return $this->show($series->media_id);
     }
 
     public function index(){
-    	$series = Series::with('media')->get(); ; 
+    	$series = Series::join('media', 'id', '=', 'media_id')
+                        ->get();
 
-    	return response()->json($series);
+        foreach ($series as $s) {
+            $mediaController = new MediaController;
+            $media = $mediaController->show($s->media_id)->original;
+            $s->genres = $media->genres;
+        }
+
+        return response()->json($series);
     }
 
     public function show($media_id){
-        $series = Series::with('media')->where('media_id', $media_id)->first();
+        $series = Series::where('media_id', $media_id)
+                        ->join('media', 'id', '=', 'media_id')
+                        ->first();
+
+        $mediaController = new MediaController;
+        $media = $mediaController->show($series->media_id)->original;
+        $series->genres = $media->genres;
 
     	return response()->json($series);
     }
@@ -36,22 +49,22 @@ class SeriesController extends Controller
     	$series = Series::where('media_id', $media_id)->first();
 
         if ($series) {
-            if ($request->num_seasons) 
+            if ($request->num_seasons)
                 $series->num_seasons = $request->num_seasons;
-            
-            if ($request->media_id) 
+
+            if ($request->media_id)
                 $series->media_id = $request->media_id;
-            
+
             if ($request->name || $request->release_year || $request->parental_rating || $request->description) {
                 $mediaController = new MediaController;
                 $media = $mediaController->update($request, $media_id);
             }
 
-            $series->save(); 
-            return $this->show($media->getData()->id); 
+            $series->save();
+            return $this->show($media->getData()->id);
         } else {
             return response()->json(['Esta serie nao existe']);
-        }	
+        }
     }
 
     public function delete($media_id){
@@ -59,6 +72,6 @@ class SeriesController extends Controller
         $mediaController = new MediaController;
         $media = $mediaController->delete($media_id);
 
-    	return response()->json(['Serie deletada com sucesso']); 
+    	return response()->json(['Serie deletada com sucesso']);
     }
 }
