@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('genre_media', function (Blueprint $table) {
             $table->integer('genre_id')->unsigned();
             $table->integer('media_id')->unsigned();
+            $table->primary(['genre_id', 'media_id']);
         });
     }
 

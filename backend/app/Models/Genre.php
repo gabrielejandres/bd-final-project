@@ -11,6 +11,6 @@ class Genre extends Model
 
     public function medias()
     {
-        return $this->hasMany('App\Models\Media');
+        return $this->belongsToMany('App\Models\Media');
     }
 }
