@@ -30,6 +30,7 @@ class MediaController extends Controller
                         ->with('genres')
                         ->with('actors')
                         ->with('directors')
+                        ->with('platforms')
                         ->get();
 
     	return response()->json($medias);
@@ -40,6 +41,7 @@ class MediaController extends Controller
                         ->with('genres')
                         ->with('actors')
                         ->with('directors')
+                        ->with('platforms')
                         ->where('id', $id)
                         ->first();
 
