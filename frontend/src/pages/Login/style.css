@@ -1,16 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
-
-:root {
-    --color-brand-primary: #510F60;
-    --color-brand-secondary: #F17E50;
-
-    --color-neutral-lightest: #F2F2F2;
-    --color-neutral-medium: rgba(133,133,133, 1);
-    --color-neutral-darkest: #363636;
-
-    --primary-brand-font: 'Montserrat', sans-serif;
-}
-
 .main-page {
   background-image: radial-gradient(circle, #81249C, var(--color-brand-primary));
 
@@ -85,7 +72,7 @@
 
   background-color: rgba(133,133,133, 0.2);
 
-  font-family: var(--primary-brand-font);
+  font-family: var(--font-brand-primary);
 }
 
 input:focus {

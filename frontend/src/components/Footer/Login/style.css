@@ -8,7 +8,7 @@
     --color-neutral-medium: rgba(133,133,133, 1);
     --color-neutral-darkest: #363636;
 
-    --primary-brand-font: 'Montserrat', sans-serif;
+    --font-brand-primary: 'Montserrat', sans-serif;
 }
 
 .text-login hr{
@@ -28,7 +28,7 @@
   
     color: var(--color-neutral-darkest);
   
-    font-family: var(--primary-brand-font);
+    font-family: var(--font-brand-primary);
 }
 
 .login-icons {

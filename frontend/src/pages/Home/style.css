@@ -1,12 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
-
-:root{
-    --color-brand-primary: #510F60;
-    --color-brand-secondary: #F17E50;
-    --color-neutral-lightest: #F2F2F2;
-    --primary-brand-font: 'Montserrat', sans-serif;
-}
-
 .container{
     width: 35vw;
     height: 65vh;
