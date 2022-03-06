@@ -1,7 +1,8 @@
-import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './pages/Login/index.jsx'
 import Home from './pages/Home/index.jsx'
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Ranking from './pages/Ranking/index.jsx'
+import './App.css';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login/>}/>
             <Route path="/home" element={<Home/>}/>
+            <Route path="/home/ranking" element={<Ranking/>}/>
           </Routes>
       </BrowserRouter>
     </div>

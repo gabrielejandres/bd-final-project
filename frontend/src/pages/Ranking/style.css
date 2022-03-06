@@ -1,0 +1,126 @@
+.ranking-page {
+    background-image: radial-gradient(circle, #81249C, var(--color-brand-primary));
+  
+    height: 100vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ranking-page .container {
+    width: 50vw;
+    height: 80vh;
+}
+
+.ranking-page .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ranking-page ul {
+    list-style: none;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+}
+
+.ranking-page li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(133,133,133, 0.1);
+
+    padding: 2vh;
+    margin: 1vh;
+
+    width: 60%;
+
+    border-radius: 10px;
+}
+
+.ranking-page .position {
+    border-radius: 50%;
+    display: inline-block;
+
+    height: 40px;
+    width: 40px;
+
+    background-color: var(--color-brand-secondary);
+
+    font-weight: bold;
+    color: var(--color-neutral-lightest);
+
+    box-shadow: inset -2px -2px 2px var(--color-neutral-darkest);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 1vw;
+}
+
+.ranking-page .score {
+    font-weight: bold;
+
+    color: var(--color-brand-primary);
+
+    display: flex;
+    align-items: center;
+}
+
+.ranking-page .score .icon {
+    font-size: 1.7rem;
+    padding-right: 0.3vw;
+}
+
+.ranking-page .user .icon {
+    font-size: 1.7rem;
+
+    margin-left: 1vw;
+}
+
+.ranking-page .user .gold {
+    color: #FFBA51;
+}
+
+.ranking-page .user .silver {
+    color: #807382;
+}
+
+.ranking-page .user .copper {
+    color: #994519;
+}
+
+.ranking-page .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+}
+
+.ranking-page .header h1 {
+    justify-self: center;
+
+    margin-left: 16.5vw;
+
+    color: var(--color-neutral-darkest);
+}
+
+.ranking-page .header .goBack {
+    font-size: 2rem;
+
+    color: var(--color-brand-primary);
+
+    margin-left: 3vw;
+
+    cursor: pointer;
+}
