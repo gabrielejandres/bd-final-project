@@ -1,0 +1,114 @@
+.container {
+    width: 50vw;
+    height: 80vh;
+}
+
+h1 {
+    color: var(--color-neutral-darkest);
+}  
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(133,133,133, 0.1);
+
+    padding: 2vh;
+    margin: 1vh;
+
+    width: 60%;
+
+    border-radius: 10px;
+}
+
+.position {
+    border-radius: 50%;
+    display: inline-block;
+
+    height: 40px;
+    width: 40px;
+
+    background-color: var(--color-brand-secondary);
+
+    font-weight: bold;
+    color: var(--color-neutral-lightest);
+
+    box-shadow: inset -2px -2px 2px var(--color-neutral-darkest);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 1vw;
+}
+
+.score {
+    font-weight: bold;
+
+    color: var(--color-brand-primary);
+
+    display: flex;
+    align-items: center;
+}
+
+.score .icon {
+    font-size: 1.7rem;
+    padding-right: 0.3vw;
+}
+
+.user .icon {
+    font-size: 1.7rem;
+
+    margin-left: 1vw;
+}
+
+.user .gold {
+    color: #FFBA51;
+}
+
+.user .silver {
+    color: #807382;
+}
+
+.user .copper {
+    color: #994519;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+.header h1 {
+    justify-self: center;
+}
+
+.header .goBack {
+    font-size: 2rem;
+
+    color: var(--color-brand-primary);
+
+    justify-self: flex-start;
+}
