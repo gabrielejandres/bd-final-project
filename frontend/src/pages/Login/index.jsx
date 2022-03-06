@@ -1,5 +1,5 @@
 import './style.css';
-import pfIcon from '../../assets/img/woman.png';
+import pfIcon from '../../assets/img/icon.png';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/index.jsx';
