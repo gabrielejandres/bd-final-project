@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
+
 :root{
     --color-brand-primary: #510F60;
     --color-brand-secondary: #F17E50;
     --color-neutral-lightest: #F2F2F2;
-    primary-brand-font: 'Montserrat';
-  }
+    --primary-brand-font: 'Montserrat', sans-serif;
+}
 
 .container{
     width: 35vw;
@@ -15,6 +17,7 @@
     background-color: var(--color-neutral-lightest);
     border-radius: 20px;
     box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
+    color: var(--color-neutral-darkest);
 }
 
 .container-content{
