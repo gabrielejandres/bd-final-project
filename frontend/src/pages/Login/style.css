@@ -1,108 +1,93 @@
-:root{
-  --color-brand-primary: #510F60;
-  --color-brand-secondary: #F17E50;
-  --color-neutral-lightest: #F2F2F2;
-}
-
-.main-page{
+.main-page {
   background-image: radial-gradient(circle, #81249C, var(--color-brand-primary));
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
 
-.logo {
-  width: 35vw;
+  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container-login{
-  margin-top: 20vh;
-  width: 35vw;
-  height: 50vh;
+.logo img {
+  height: 15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-login {
+  width: 40vw;
+  height: 60vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
   background-color: var(--color-neutral-lightest);
+
   border-radius: 20px;
   box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
 }
 
-.top{
+.access-area {
   display: flex;
-  justify-content: space-between
-}
-
-.faq{
-  font-size: 40px;
-  cursor: pointer;
-  width: auto;
-  height: 40px;
-  margin-left: 10vw;
-}
-
-.access-area{
-  display: flex;
-  width:35vw;
   justify-content: center;
+
+  width: 35vw;
 }
 
-.user-interaction{
+.user-interaction {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
   margin-left: 1.5vw;
 }
 
-.profile{
+.profile {
   width: auto;
   height: auto;
+
   margin-top: 30px;
   margin-bottom: 50px;
 }
 
-.profile img{
-  height: 80px;
+.profile img {
+  height: 150px;
   width: auto;
 }
 
 .input{
   border-radius: 10px;
+  border: 1px solid var(--color-neutral-medium);
+
   height: 24px;
-  margin-bottom: 10px;
-  border-color: rgba(133,133,133)
+  width: 12vw;
+
+  margin-bottom: 2.5vh;
+  padding: 1vh;
+
+  background-color: rgba(133,133,133, 0.2);
+
+  font-family: var(--font-brand-primary);
 }
 
-.container-footer{
+input:focus {
+  outline: none;
+}
+
+.container-footer {
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.login-icons{
-  display: flex;
-  justify-content: center;
-}
-
-.login-icons img{
-  width: auto;
-  height: 25px;
-  padding: 0.5vw;
-}
-
-.text-login{
-  display: flex;
-  justify-content:center;
-  align-items: center;
-}
-
-
-.continue-button{
+.continue-button {
   display: flex;
   align-items: center;
   justify-content: center;
