@@ -9,6 +9,8 @@ class Media extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     // Multivalued attribute
     public function countries()
     {

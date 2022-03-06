@@ -9,6 +9,8 @@ class Country extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     // protected $primaryKey = ['code', 'name', 'media_id'];
     // public $incrementing = false;
 

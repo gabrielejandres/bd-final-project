@@ -12,15 +12,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'username',
         'score',
     ];
+
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function createUser($request){
         $this->username = $request->username;
@@ -35,7 +32,7 @@ class User extends Authenticatable
         if ($request->score) {
             $this->score = $request->score;
         }
-        
+
         $this->save();
     }
 }
