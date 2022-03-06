@@ -1,36 +1,44 @@
-.container{
-    width: 35vw;
-    height: 65vh;
+.container {
+    width: 40vw;
+    height: 60vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     background-color: var(--color-neutral-lightest);
-    border-radius: 20px;
-    box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
     color: var(--color-neutral-darkest);
+
+    border-radius: 20px;
+    box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2);
 }
 
-.container-content{
+.container-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     height: 80%;
+
     margin-top: 50px;
 }
 
-.buttons-area{
+.buttons-area {
     display: flex;
     flex-direction: column;
-    height: 26vh;
     align-items: center;
     justify-content: space-evenly;
+
+    height: 26vh;
     width: 100%;
-    margin-top: 5.5vh;
+
+    margin-top: 3vh;
 }
 
-.logo {
-    width: 35vw;
+.logo img {
+    height: 15vh;
+  
     display: flex;
     justify-content: center;
     align-items: center;
