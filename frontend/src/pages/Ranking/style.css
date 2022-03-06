@@ -1,19 +1,25 @@
-.container {
+.ranking-page {
+    background-image: radial-gradient(circle, #81249C, var(--color-brand-primary));
+  
+    height: 100vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ranking-page .container {
     width: 50vw;
     height: 80vh;
 }
 
-h1 {
-    color: var(--color-neutral-darkest);
-}  
-
-.user {
+.ranking-page .user {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-ul {
+.ranking-page ul {
     list-style: none;
     width: 100%;
 
@@ -25,7 +31,7 @@ ul {
     padding: 0;
 }
 
-li {
+.ranking-page li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +46,7 @@ li {
     border-radius: 10px;
 }
 
-.position {
+.ranking-page .position {
     border-radius: 50%;
     display: inline-block;
 
@@ -61,7 +67,7 @@ li {
     margin-right: 1vw;
 }
 
-.score {
+.ranking-page .score {
     font-weight: bold;
 
     color: var(--color-brand-primary);
@@ -70,45 +76,51 @@ li {
     align-items: center;
 }
 
-.score .icon {
+.ranking-page .score .icon {
     font-size: 1.7rem;
     padding-right: 0.3vw;
 }
 
-.user .icon {
+.ranking-page .user .icon {
     font-size: 1.7rem;
 
     margin-left: 1vw;
 }
 
-.user .gold {
+.ranking-page .user .gold {
     color: #FFBA51;
 }
 
-.user .silver {
+.ranking-page .user .silver {
     color: #807382;
 }
 
-.user .copper {
+.ranking-page .user .copper {
     color: #994519;
 }
 
-.header {
+.ranking-page .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     width: 100%;
 }
 
-.header h1 {
+.ranking-page .header h1 {
     justify-self: center;
+
+    margin-left: 16.5vw;
+
+    color: var(--color-neutral-darkest);
 }
 
-.header .goBack {
+.ranking-page .header .goBack {
     font-size: 2rem;
 
     color: var(--color-brand-primary);
 
-    justify-self: flex-start;
+    margin-left: 3vw;
+
+    cursor: pointer;
 }
