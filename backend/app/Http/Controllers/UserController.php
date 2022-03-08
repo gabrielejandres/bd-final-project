@@ -52,7 +52,8 @@ class UserController extends Controller
     }
 
     public function ranking(){
-    	$users = User::orderByRaw('score DESC')
+    	$users = User::orderByDesc('score')
+                ->limit(5)
                 ->get();
 
     	return response()->json($users);
