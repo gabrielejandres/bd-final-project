@@ -9,6 +9,8 @@ class Platform extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function medias()
     {
         return $this->belongsToMany('App\Models\Media')->withPivot('inclusion_date');;

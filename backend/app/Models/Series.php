@@ -11,8 +11,10 @@ class Series extends Model
 
     public $incrementing = false;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function media()
     {
         return $this->belongsTo('App\Models\Media', 'media_id');
-    }  
+    }
 }

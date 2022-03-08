@@ -11,13 +11,13 @@ class UserController extends Controller
     	$user = new User;
 
     	$user->username = $request->username;
-    	$user->save(); 
+    	$user->save();
 
-    	return response()->json($user); 
+    	return response()->json($user);
     }
 
     public function index(){
-    	$users = User::all(); 
+    	$users = User::all();
 
     	return response()->json($users);
     }
@@ -32,27 +32,28 @@ class UserController extends Controller
     	$user = User::find($id);
 
         if ($user) {
-            if ($request->username) 
+            if ($request->username)
                 $user->username = $request->username;
 
-            if ($request->score)   
+            if ($request->score)
                 $user->score = $request->score;
 
-            $user->save(); 
-            return response()->json($user); 
+            $user->save();
+            return response()->json($user);
         } else {
             return response()->json(['Este usuario nao existe']);
-        }	
+        }
     }
 
     public function delete($id){
     	User::destroy($id);
 
-    	return response()->json(['Usuario deletado com sucesso']); 
+    	return response()->json(['Usuario deletado com sucesso']);
     }
 
     public function ranking(){
-    	$users = User::orderByRaw('score DESC')
+    	$users = User::orderByDesc('score')
+                ->limit(5)
                 ->get();
 
     	return response()->json($users);

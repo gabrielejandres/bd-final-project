@@ -117,4 +117,121 @@ class MediaController extends Controller
 
     	return response()->json(['Relação entre midia e plataforma criada com sucesso']);
     }
+
+    // Question functions
+    public function getReleaseYearQuestion() {
+        // making the question
+        $years = Media::select('release_year')
+                        ->inRandomOrder()
+                        ->limit(10)
+                        ->get()
+                        ->toArray(); // get valid years
+        $year = $years[array_rand($years)]['release_year']; // using some valid year from database
+
+        $question = 'Qual dessas mídias foi lançada em ' . $year . '?'; 
+
+        // getting a valid answer
+        $answer = Media::select('name')
+                    ->where('release_year', $year)
+                    ->inRandomOrder()
+                    ->first();
+
+        // getting options
+        $options = Media::select('name')
+                        ->where('release_year', '!=', $year)
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer->name);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer->name
+        ]);
+    }
+
+    public function getTwoPlatformsQuestion() {
+        // making the question
+        $platforms = Platform::select('id', 'name')
+                        ->inRandomOrder()
+                        ->limit(2)
+                        ->get()
+                        ->toArray();
+        $question = 'Qual dessas mídias está nas plataformas ' . $platforms[0]['name'] . ' e ' . $platforms[1]['name'] . '?';
+
+        // getting a valid answer
+        $answer = Media::select('media.name')
+                    ->join('media_platform as m1', 'm1.media_id', '=', 'id')
+                    ->join('media_platform as m2', 'm2.media_id', '=', 'id')
+                    ->where('m1.platform_id', $platforms[0]['id'])
+                    ->where('m2.platform_id', $platforms[1]['id'])
+                    ->inRandomOrder()
+                    ->first();
+
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Media::select('name')
+                        ->where('name', '!=', $answer)
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();            
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
+
+    public function getnotAMovieQuestion() {
+        // making the question
+        $question = 'Qual desses títulos não é um filme?'; 
+
+        // getting a valid answer
+        $answer = Media::select('name')
+                    ->join('movies', 'id', '=', 'media_id')
+                    ->inRandomOrder()
+                    ->first();
+
+        // getting options
+        $options = Media::select('name')
+                        ->join('series', 'id', '=', 'media_id')
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer->name);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer->name
+        ]);
+    }
 }
