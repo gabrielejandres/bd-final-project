@@ -81,6 +81,7 @@ class SeriesController extends Controller
     	return response()->json(['Serie deletada com sucesso']);
     }
 
+    // Question functions
     public function getNumberOfSeasonsQuestion() {
         // making the question
         $series = Series::join('media', 'id', '=', 'media_id')
