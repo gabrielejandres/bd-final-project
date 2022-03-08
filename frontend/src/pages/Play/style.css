@@ -14,7 +14,7 @@
   box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
 }
 
-.score{
+.main-page .score{
   position: absolute;
   right: 10vw;
   top: 5vh;
