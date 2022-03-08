@@ -1,9 +1,10 @@
 import './style.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer/Home/index.jsx';
 import { MdSportsScore, MdOutlineArrowBackIosNew } from 'react-icons/md';
-import { FaMedal } from 'react-icons/fa'; 
+import { FaMedal } from 'react-icons/fa';
+import RankingService from '../../services/Ranking/index.js';
 
 export default function Ranking() {
 
@@ -11,6 +12,20 @@ export default function Ranking() {
   {'name': 'User 3', 'score': '200'}, {'name': 'User 4', 'score': '200'}, {'name': 'User 5', 'score': '200'} ]);
 
   const navigate = useNavigate();
+
+  const GetRanking = async () => {
+    try {
+        const response = await RankingService.showRank();
+        console.log(response);
+        setUsers(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  };
+
+  useEffect(()=>{
+    GetRanking();
+  }, [])
 
   return(
     <div className="ranking-page">
@@ -27,7 +42,7 @@ export default function Ranking() {
                     <div className="position">
                       { index + 1 }
                     </div>
-                    { user.name } 
+                    { user.username } 
                     { index === 0 && <FaMedal className="icon gold" /> }
                     { index === 1 && <FaMedal className="icon silver" /> }
                     { index === 2 && <FaMedal className="icon copper" /> }
