@@ -1,42 +1,44 @@
-:root{
-    --color-brand-primary: #510F60;
-    --color-brand-secondary: #F17E50;
-    --color-neutral-lightest: #F2F2F2;
-    primary-brand-font: 'Montserrat';
-  }
+.container {
+    width: 40vw;
+    height: 60vh;
 
-.container{
-    width: 35vw;
-    height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     background-color: var(--color-neutral-lightest);
+    color: var(--color-neutral-darkest);
+
     border-radius: 20px;
-    box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2) ;
+    box-shadow: -2px 2px 5px 4px rgba(0,0,0,0.2);
 }
 
-.container-content{
+.container-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     height: 80%;
+
     margin-top: 50px;
 }
 
-.buttons-area{
+.buttons-area {
     display: flex;
     flex-direction: column;
-    height: 26vh;
     align-items: center;
     justify-content: space-evenly;
+
+    height: 26vh;
     width: 100%;
-    margin-top: 5.5vh;
+
+    margin-top: 3vh;
 }
 
-.logo {
-    width: 35vw;
+.logo img {
+    height: 15vh;
+  
     display: flex;
     justify-content: center;
     align-items: center;

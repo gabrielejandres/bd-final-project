@@ -1,25 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700;900&display=swap');
+
 :root{
     --color-brand-primary: #510F60;
     --color-brand-secondary: #F17E50;
-    --color-neutral-lightest: #F2F2F2;
-    --primary-brand-font: 'Roboto, sans-serif';
-  }
 
+    --color-neutral-lightest: #F2F2F2;
+    --color-neutral-darkest: #363636;
+
+    --font-brand-primary: 'Montserrat', sans-serif;
+}
 
 .button {
   cursor: pointer;
+
   border-radius:30px;
-  line-height: 2.5rem;
-  font-family: var(--primary-brand-font);
-  height: 4vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  border: 1px solid #ffffff;
-  background-image: linear-gradient(-180deg, var(--color-brand-secondary) 0%, #E6633A 100%);
+  border: 1px solid var(--color-neutral-lightest);
   box-shadow: 0 0 0.25rem 0 grey,
               0 -0.25rem 1.5rem rgba(255, 255, 255, 0.1) inset,
               0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
               0 0.25rem 0.5rem 0 rgba(255, 255, 255, 0.3) inset;
+
+  line-height: 2.5rem;
+  font-family: var(--font-brand-primary);
+  font-weight: 500;
+
+  height: 4vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-image: linear-gradient(-180deg, var(--color-brand-secondary) 0%, #E66038 100%);
+
+  color: var(--color-neutral-lightest);
+
+  padding: 2.5vh;
 }
