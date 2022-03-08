@@ -84,10 +84,13 @@ class SeriesController extends Controller
     // Question functions
     public function getNumberOfSeasonsQuestion() {
         // making the question
-        $series = Series::join('media', 'id', '=', 'media_id')
+        $series = Series::select('name', 'media_id')
+                        ->join('media', 'id', '=', 'media_id')
                         ->get()
                         ->toArray(); 
-        $serie = $series[array_rand($series)]; 
+
+        $serie = $series[array_rand($series)];
+
         $question = 'Quantas temporadas tem a série ' . $serie['name'] . '?'; 
 
         // getting a valid answer
