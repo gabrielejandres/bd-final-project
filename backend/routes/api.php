@@ -84,4 +84,6 @@ Route::post('/media/actor', [MediaController::class, 'createRelationshipWithActo
 Route::post('/media/platform', [MediaController::class, 'createRelationshipWithPlatform']);
 
 // Media questions
-Route::get('/releaseYearQuestion', [MediaController::class, 'getReleaseYearQuestion']);
+Route::get('/question/releaseYear', [MediaController::class, 'getReleaseYearQuestion']);
+
+Route::get('/question/numberOfSeasons', [SeriesController::class, 'getNumberOfSeasonsQuestion']);

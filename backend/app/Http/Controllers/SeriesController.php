@@ -80,4 +80,39 @@ class SeriesController extends Controller
 
     	return response()->json(['Serie deletada com sucesso']);
     }
+
+    public function getNumberOfSeasonsQuestion() {
+        // making the question
+        $series = Series::join('media', 'id', '=', 'media_id')
+                        ->get()
+                        ->toArray(); 
+        $serie = $series[array_rand($series)]; 
+        $question = 'Quantas temporadas tem a série ' . $serie['name'] . '?'; 
+
+        // getting a valid answer
+        $answer = Series::select('num_seasons')
+                    ->where('media_id', $serie['media_id'])
+                    ->first();
+
+        // getting options
+        $options = Series::select('num_seasons') 
+                        ->where('num_seasons', '!=', $answer->num_seasons)
+                        ->limit(3)
+                        ->get();
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->num_seasons;
+        }
+        array_push($optionsArray, $answer->num_seasons);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer->num_seasons
+        ]);
+    }
 }
