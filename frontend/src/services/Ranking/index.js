@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const route = axios.create({
-    baseURL: 'localhost:8000/api',
+    baseURL: 'localhost:8001/api',
 })
 
 export default{
