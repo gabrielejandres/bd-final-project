@@ -101,6 +101,7 @@ class SeriesController extends Controller
         // getting options
         $options = Series::select('num_seasons') 
                         ->where('num_seasons', '!=', $answer->num_seasons)
+                        ->inRandomOrder()
                         ->limit(3)
                         ->get();
 

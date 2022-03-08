@@ -139,6 +139,7 @@ class MediaController extends Controller
         // getting options
         $options = Media::select('name')
                         ->where('release_year', '!=', $year)
+                        ->inRandomOrder()
                         ->limit(3)
                         ->get();
 
@@ -158,4 +159,36 @@ class MediaController extends Controller
         ]);
     }
 
+    public function getnotAMovieQuestion() {
+        // making the question
+        $question = 'Qual desses títulos não é um filme?'; 
+
+        // getting a valid answer
+        $answer = Media::select('name')
+                    ->join('movies', 'id', '=', 'media_id')
+                    ->inRandomOrder()
+                    ->first();
+
+        // getting options
+        $options = Media::select('name')
+                        ->join('series', 'id', '=', 'media_id')
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer->name);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer->name
+        ]);
+    }
 }
