@@ -24,7 +24,7 @@ export default function Play(){
       setClockRunning(false);
       setclickedOnAnswer(false);
       alert('Você perdeu!');
-      navigate('/ranking')
+      navigate('/home/ranking')
     }
   }
 
@@ -32,7 +32,7 @@ export default function Play(){
     setTime(remainingTime)
     if(remainingTime === 0){
       setClockRunning(false);
-      navigate('/ranking')
+      navigate('/home/ranking')
     }
 
     return (
