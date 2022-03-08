@@ -91,6 +91,7 @@ Route::get('/question/movieByPlatform', [MediaController::class, 'getMovieByPlat
 Route::get('/question/oldestMovie', [MediaController::class, 'getOldestMovieQuestion']);
 Route::get('/question/oldestSeries', [MediaController::class, 'getOldestSeriesQuestion']);
 
+Route::get('/question/seriesWithMoreSeasons', [SeriesController::class, 'getSeriesWithMoreSeasonsQuestion']);
 Route::get('/question/numberOfSeasons', [SeriesController::class, 'getNumberOfSeasonsQuestion']);
 
 // To Do
@@ -101,7 +102,5 @@ Route::get('/question/directorAndActor', [DirectorController::class, 'getDirecto
 Route::get('/question/directorWithMoreMovies', [DirectorController::class, 'getDirectorWithMoreMovies']);
 
 Route::get('/question/platformWithMoreMedias', [PlatformController::class, 'getPlatformWithMoreMedias']);
-
-Route::get('/question/seriesWithMoreSeasons', [SeriesController::class, 'getSeriesWithMoreSeasons']);
 
 

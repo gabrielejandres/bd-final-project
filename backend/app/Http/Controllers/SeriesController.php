@@ -120,4 +120,42 @@ class SeriesController extends Controller
             'answer' => $answer->num_seasons
         ]);
     }
+
+    public function getSeriesWithMoreSeasonsQuestion() {
+        // making the question
+        $question = 'Qual a série com mais temporadas?'; 
+
+        // getting a valid answer
+        $maxSeasons = (Series::selectRaw('max(num_seasons) as maximo')->first())->maximo;
+
+        $answer = Series::select('name')
+                    ->join('media', 'id', '=', 'media_id')
+                    ->where('num_seasons', $maxSeasons)
+                    ->first();
+
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Series::select('name') 
+                        ->join('media', 'id', '=', 'media_id')
+                        ->where('num_seasons', '<', $maxSeasons)
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
 }
