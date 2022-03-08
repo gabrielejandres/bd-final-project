@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import './style.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { useNavigate } from 'react-router-dom';
 
 export default function Play(){
 
+  const navigate = useNavigate();
   const [score, setScore] = useState(0)
   const [question, setQuestion] = useState('Você concorda que 1+1 é igual a 2?')
   const [options, setOptions] = useState(['alo', 'teste', 'sim', 'não'])
@@ -17,15 +19,21 @@ export default function Play(){
       setClockRunning(false);
       setScore(time*10);
       setclickedOnAnswer(true);
+
     } else if(options != answer && clickedOnAnswer == undefined){
       setClockRunning(false);
-      setScore(0);
       setclickedOnAnswer(false);
+      alert('Você perdeu!');
+      navigate('/ranking')
     }
   }
 
   const renderTime = ({ remainingTime }) => {
-    setTime(remainingTime) 
+    setTime(remainingTime)
+    if(remainingTime === 0){
+      setClockRunning(false);
+      navigate('/ranking')
+    }
 
     return (
         <div id='time'>{remainingTime}</div>
