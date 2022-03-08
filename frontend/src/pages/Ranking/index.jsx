@@ -16,7 +16,8 @@ export default function Ranking() {
   const GetRanking = async () => {
     try {
         const response = await RankingService.showRank();
-        setUsers(response.user)
+        console.log(response);
+        setUsers(response.data)
     } catch (error) {
       console.error(error)
     }
@@ -24,7 +25,7 @@ export default function Ranking() {
 
   useEffect(()=>{
     GetRanking();
-  })
+  }, [])
 
   return(
     <div className="ranking-page">
@@ -41,7 +42,7 @@ export default function Ranking() {
                     <div className="position">
                       { index + 1 }
                     </div>
-                    { user.name } 
+                    { user.username } 
                     { index === 0 && <FaMedal className="icon gold" /> }
                     { index === 1 && <FaMedal className="icon silver" /> }
                     { index === 2 && <FaMedal className="icon copper" /> }

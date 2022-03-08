@@ -16,8 +16,9 @@ export default function Login(){
     console.log(data);
     try {
       if(data.username != ""){
-        const response = await UserService.register(data.username);
-        localStorage.setItem('id', response)
+        const response = await UserService.register(data);
+        console.log(response)
+        localStorage.setItem('id', response.data.id)
         navigate('/home')
       } else{
         alert('username inválido');
