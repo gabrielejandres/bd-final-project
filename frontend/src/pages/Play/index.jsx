@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './style.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { useNavigate } from 'react-router-dom';
+import UserService from '../../services/User/index.js';
 
 export default function Play(){
 
@@ -13,8 +14,9 @@ export default function Play(){
   const [time, setTime] = useState(30)
   const [clickedOnAnswer, setclickedOnAnswer] = useState(undefined)
   const [isClockRunning, setClockRunning] = useState(true)
+  const [questionChoosed, setChoosedQuestion] = useState(1)
 
-  const checkAnswer = (option) =>{
+  const checkAnswer = async (option) =>{
     if(option === answer && clickedOnAnswer == undefined){
       setClockRunning(false);
       setScore(time*10);
@@ -23,8 +25,61 @@ export default function Play(){
     } else if(options != answer && clickedOnAnswer == undefined){
       setClockRunning(false);
       setclickedOnAnswer(false);
+      const response = await UserService.updateScore(localStorage.getItem('id'));
       alert('Você perdeu!');
       navigate('/home/ranking')
+    }
+  }
+
+  const createQuestion = async (question)=>{
+    switch (question) {
+      case 1:
+        
+        break;
+
+      case 2:
+      
+        break;
+
+      case 3:
+      
+        break;
+
+      case 4:
+      
+        break;
+
+      case 5:
+      
+        break;
+
+      case 6:
+      
+        break;
+
+      case 7:
+      
+        break;
+
+      case 8:
+      
+        break;
+
+      case 9:
+      
+        break;
+
+      case 10:
+      
+        break;
+
+      case 11:
+      
+        break;
+
+      case 12:
+      
+        break;
     }
   }
 
@@ -42,6 +97,9 @@ export default function Play(){
 
 
   useEffect(()=>{
+
+    setChoosedQuestion(Math.random(1,12))
+    createQuestion(questionChoosed)
 
   }, [score])
 

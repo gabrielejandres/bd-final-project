@@ -5,16 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/index.jsx';
 import Logo from '../../components/Logo/index.jsx';
 import Footer from '../../components/Footer/Login/index.jsx';
+import UserService from '../../services/User/index.js';
 
 export default function Login(){
 
   const {handleSubmit, register} = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     try {
-      data.username != "" ? navigate('/home') : console.log('nao')
+      if(data.username != ""){
+        const response = await UserService.register(data.username);
+        localStorage.setItem('id', response)
+        navigate('/home')
+      } else{
+        alert('username inválido');
+      }
     } catch (error) {
       console.error(error)
     }
