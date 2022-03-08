@@ -235,7 +235,7 @@ class MediaController extends Controller
         ]);
     }
 
-    public function getMovieByPlatform() {
+    public function getMovieByPlatformQuestion() {
         // making the question
         $platforms = Platform::select('id', 'name')
                         ->inRandomOrder()
@@ -249,8 +249,7 @@ class MediaController extends Controller
                     ->join('movies', 'media_id', '=', 'id')
                     ->whereIn('media_id', Media::select('media_id')
                                             ->join('media_platform', 'media_id', '=', 'id')
-                                            ->where('platform_id', $platforms[0]['id'])
-                            )
+                                            ->where('platform_id', $platforms[0]['id']))
                     ->inRandomOrder()
                     ->first();
 
@@ -259,6 +258,80 @@ class MediaController extends Controller
         // getting options
         $options = Media::select('name')
                         ->where('name', '!=', $answer)
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();            
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
+
+    public function getOldestMovieQuestion() {
+        // making the question
+        $question = 'Qual dos filmes a seguir é mais antigo?';
+
+        // getting a valid answer
+        $answer = Media::selectRaw('media.name, min(release_year) as lanc')
+                    ->join('movies', 'media_id', '=', 'id')
+                    ->groupBy('media.name')
+                    ->orderBy('lanc')
+                    ->first();
+
+        $release_year = $answer->lanc;
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Media::select('name')
+                        ->where('release_year', '>', $release_year)
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();            
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
+
+    public function getOldestSeriesQuestion() {
+        // making the question
+        $question = 'Qual das séries a seguir é mais antiga?';
+
+        // getting a valid answer
+        $answer = Media::selectRaw('media.name, min(release_year) as lanc')
+                    ->join('series', 'media_id', '=', 'id')
+                    ->groupBy('media.name')
+                    ->orderBy('lanc')
+                    ->first();
+
+        $release_year = $answer->lanc;
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Media::select('name')
+                        ->where('release_year', '>', $release_year)
                         ->inRandomOrder()
                         ->limit(3)
                         ->get();            
