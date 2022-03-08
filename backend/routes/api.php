@@ -87,13 +87,13 @@ Route::post('/media/platform', [MediaController::class, 'createRelationshipWithP
 Route::get('/question/releaseYear', [MediaController::class, 'getReleaseYearQuestion']);
 Route::get('/question/twoPlatforms', [MediaController::class, 'getTwoPlatformsQuestion']);
 Route::get('/question/notAMovie', [MediaController::class, 'getNotAMovieQuestion']);
+Route::get('/question/movieByPlatform', [MediaController::class, 'getMovieByPlatform']);
 
 Route::get('/question/numberOfSeasons', [SeriesController::class, 'getNumberOfSeasonsQuestion']);
 
 // To Do
 Route::get('/question/movieByGenreAndActor', [MediaController::class, 'getMovieByGenreAndActor']);
 Route::get('/question/oldestMedia', [MediaController::class, 'getOldestMedia']);
-Route::get('/question/mediaByPlatform', [MediaController::class, 'getMediaByPlatform']);
 
 Route::get('/question/directorWithMoreMediasByGenre', [DirectorController::class, 'getDirectorWithMoreMediasByGenre']);
 Route::get('/question/directorAndActor', [DirectorController::class, 'getDirectorAndActor']);

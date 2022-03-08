@@ -234,4 +234,48 @@ class MediaController extends Controller
             'answer' => $answer->name
         ]);
     }
+
+    public function getMovieByPlatform() {
+        // making the question
+        $platforms = Platform::select('id', 'name')
+                        ->inRandomOrder()
+                        ->limit(1)
+                        ->get()
+                        ->toArray();
+        $question = 'Qual filme está na plataforma ' . $platforms[0]['name'] . '?';
+
+        // getting a valid answer
+        $answer = Media::select('media.name')
+                    ->join('movies', 'media_id', '=', 'id')
+                    ->whereIn('media_id', Media::select('media_id')
+                                            ->join('media_platform', 'media_id', '=', 'id')
+                                            ->where('platform_id', $platforms[0]['id'])
+                            )
+                    ->inRandomOrder()
+                    ->first();
+
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Media::select('name')
+                        ->where('name', '!=', $answer)
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();            
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
 }
