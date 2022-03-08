@@ -117,4 +117,40 @@ class MediaController extends Controller
 
     	return response()->json(['Relação entre midia e plataforma criada com sucesso']);
     }
+
+    // Question functions
+    public function getReleaseYearQuestion() {
+        // making the question
+        $medias = Media::all()->toArray(); // get all medias
+        $media = $medias[array_rand($medias)]; // get a specific media
+        $question = 'Qual dessas mídias foi lançada em ' . $media['release_year'] . '?'; // using some valid year from database
+
+        // getting a valid answer
+        $answer = Media::select('name')
+                    ->where('release_year', $media['release_year'])
+                    ->inRandomOrder()
+                    ->first();
+
+        // getting options
+        $options = Media::select('name')
+                        ->where('release_year', '!=', $media['release_year'])
+                        ->limit(3)
+                        ->get();
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer->name);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer->name
+        ]);
+    }
+
 }

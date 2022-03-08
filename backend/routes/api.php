@@ -82,3 +82,6 @@ Route::post('/media/genre', [MediaController::class, 'createRelationshipWithGenr
 Route::post('/media/director', [MediaController::class, 'createRelationshipWithDirector']);
 Route::post('/media/actor', [MediaController::class, 'createRelationshipWithActor']);
 Route::post('/media/platform', [MediaController::class, 'createRelationshipWithPlatform']);
+
+// Media questions
+Route::get('/releaseYearQuestion', [MediaController::class, 'getReleaseYearQuestion']);
