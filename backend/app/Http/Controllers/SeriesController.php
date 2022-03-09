@@ -99,16 +99,13 @@ class SeriesController extends Controller
                     ->first();
 
         // getting options
-        $options = Series::select('num_seasons') 
-                        ->where('num_seasons', '!=', $answer->num_seasons)
-                        ->inRandomOrder()
-                        ->limit(3)
-                        ->get();
-
         $optionsArray = [];
-        for ($i = 0; $i < count($options); $i++) {
-            $optionsArray[$i] = $options[$i]->num_seasons;
-        }
+        do {
+            $rand = rand(1,10);
+            if ($rand != $answer->num_seasons and !in_array($rand, $optionsArray)) 
+                array_push($optionsArray, $rand);
+        } while (count($optionsArray) < 3);
+        
         array_push($optionsArray, $answer->num_seasons);
 
         // randomizing options

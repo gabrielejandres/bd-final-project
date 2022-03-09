@@ -35,7 +35,7 @@ class UserController extends Controller
             if ($request->username)
                 $user->username = $request->username;
 
-            if ($request->score)
+            if ($request->score and $request->score > $user->score)
                 $user->score = $request->score;
 
             $user->save();
