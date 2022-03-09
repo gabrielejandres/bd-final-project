@@ -101,4 +101,6 @@ Route::get('/question/directorWithMoreMovies', [DirectorController::class, 'getD
 Route::get('/question/directorAndActor', [DirectorController::class, 'getDirectorAndActorQuestion']);
 Route::get('/question/directorWithMoreMediasByGenre', [DirectorController::class, 'getDirectorWithMoreMediasByGenreQuestion']);
 
+Route::get('/question/actorPhoto', [ActorController::class, 'getActorPhotoQuestion']);
+
 
