@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('director_media', function (Blueprint $table) {
-            $table->integer('director_id')->unsigned();
             $table->integer('media_id')->unsigned();
+            $table->integer('director_id')->unsigned();
             $table->primary(['director_id', 'media_id']);
         });
     }

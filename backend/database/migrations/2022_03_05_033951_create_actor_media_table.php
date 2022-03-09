@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('actor_media', function (Blueprint $table) {
-            $table->integer('actor_id')->unsigned();
             $table->integer('media_id')->unsigned();
+            $table->integer('actor_id')->unsigned();
             $table->primary(['actor_id', 'media_id']);
         });
     }

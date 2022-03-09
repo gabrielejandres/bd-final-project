@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('countries', function (Blueprint $table) {
-            $table->id();
-            $table->string('code', 3);
+            $table->string('code', 2);
             $table->string('name');
             $table->unsignedBigInteger('media_id')->nullable();
-            $table->timestamps();
+            $table->primary(['media_id', 'code', 'name']);
         });
 
         Schema::table('countries', function (Blueprint $table) { 

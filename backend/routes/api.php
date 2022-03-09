@@ -59,9 +59,6 @@ Route::delete('/media/{id}', [MediaController::class, 'delete']);
 // Country
 Route::post('/country', [CountryController::class, 'create']);
 Route::get('/country', [CountryController::class, 'index']);
-Route::get('/country/{id}', [CountryController::class, 'show']);
-Route::put('/country/{id}', [CountryController::class, 'update']);
-Route::delete('/country/{id}', [CountryController::class, 'delete']);
 
 // Movie
 Route::post('/movie', [MovieController::class, 'create']);
@@ -102,5 +99,3 @@ Route::get('/question/directorAndActor', [DirectorController::class, 'getDirecto
 Route::get('/question/directorWithMoreMediasByGenre', [DirectorController::class, 'getDirectorWithMoreMediasByGenreQuestion']);
 
 Route::get('/question/actorPhoto', [ActorController::class, 'getActorPhotoQuestion']);
-
-

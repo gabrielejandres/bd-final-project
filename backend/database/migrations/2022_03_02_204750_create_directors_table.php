@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('directors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('profile_photo');
-            $table->timestamps();
+            $table->longText('name')->notNull();
+            $table->string('profile_photo');
         });
     }
 

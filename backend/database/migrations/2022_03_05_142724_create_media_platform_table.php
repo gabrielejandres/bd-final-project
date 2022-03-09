@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('media_platform', function (Blueprint $table) {
-            $table->integer('media_id')->unsigned();
             $table->integer('platform_id')->unsigned();
             $table->date('inclusion_date');
+            $table->integer('media_id')->unsigned();
             $table->primary(['platform_id', 'media_id']);
         });
     }
