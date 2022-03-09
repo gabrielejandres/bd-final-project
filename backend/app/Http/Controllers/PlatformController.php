@@ -51,7 +51,7 @@ class PlatformController extends Controller
     // Question functions
     public function getPlatformWithMoreMediasQuestion() {
         // making the question
-        $question = 'Qual plataforma tem mais títulos no catálogo';
+        $question = 'Qual plataforma tem mais títulos no catálogo?';
 
         // getting a valid answer
         $answer = Platform::selectRaw('name, count(media_platform.media_id) as num_titles')
