@@ -14,7 +14,7 @@ export default function Home(){
           <div className="buttons-area">
             <Button label={'Jogar'} page={'play'} width={'14vw'}/>
             <Button label={'Ver ranking'} page={'ranking'} width={'14vw'}/>
-            <Button label={'Ajuda'} page={'help'} width={'14vw'}/>
+            <Button label={'Sair'} page={'/'} width={'14vw'}/>
           </div>
         </div>
         <Footer/>

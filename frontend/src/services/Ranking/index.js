@@ -12,7 +12,7 @@ export default{
             return response
 
         }catch(err){
-            alert('nao foi possivel criar usuario')
+            alert('nao foi possivel atualizar o ranking')
         }
     },
 

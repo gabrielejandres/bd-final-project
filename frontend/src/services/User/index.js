@@ -16,9 +16,9 @@ export default{
         }
     },
 
-    async updateScore(id) {
+    async updateScore(id, form) {
         try{
-            const response = await route.put(`/user/${id}`);
+            const response = await route.put(`/user/${id}`, form);
             return response
 
         }catch(err){
