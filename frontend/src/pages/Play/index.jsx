@@ -6,7 +6,6 @@ import UserService from '../../services/User/index.js';
 import GameService from '../../services/Game/index.js';
 import Loading from '../../components/Loading/index.jsx';
 import Modal from 'react-modal';
-import Button from '../../components/Button/index.jsx';
 
 export default function Play(){
 
@@ -37,9 +36,10 @@ export default function Play(){
   const [time, setTime] = useState(30)
   const [clickedOnAnswer, setclickedOnAnswer] = useState(undefined)
   const [isClockRunning, setClockRunning] = useState(true)
-  const [questionChoosed, setChoosedQuestion] = useState(Math.floor(Math.random()*4)+1)
+  const [questionChoosed, setChoosedQuestion] = useState(Math.floor(Math.random()*14)+1)
   const [key, setKey] = useState(0)
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [photo, setPhoto]= useState();
 
   const checkAnswer = async (option) =>{
     if(option === answer && clickedOnAnswer == undefined){
@@ -65,9 +65,6 @@ export default function Play(){
     }
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
 
   function closeModal() {
     setIsOpen(false);
@@ -82,6 +79,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 2:
@@ -89,12 +87,14 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
       case 3:
         response = await GameService.numberOfSeasonsQuestion();
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 4:
@@ -102,6 +102,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 5:
@@ -109,6 +110,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 6:
@@ -116,6 +118,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 7:
@@ -123,6 +126,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 8:
@@ -130,6 +134,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 9:
@@ -137,6 +142,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 10:
@@ -144,6 +150,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 11:
@@ -151,6 +158,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 12:
@@ -158,6 +166,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 13:
@@ -165,6 +174,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(null)
         break;
 
       case 14:
@@ -172,6 +182,7 @@ export default function Play(){
         setQuestion(response.data.question)
         setOptions(response.data.options)
         setAnswer(response.data.answer)
+        setPhoto(response.data.photo)
         break;    
     }
   }
@@ -206,6 +217,11 @@ export default function Play(){
         <div className="game-header">
           <div className="game-question">
             {question}
+          </div>
+          <div className="game-image">
+            { photo && 
+              <img src={photo}/>
+            }
           </div>
           <div className="game-timer">
             <CountdownCircleTimer

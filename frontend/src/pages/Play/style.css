@@ -68,6 +68,11 @@
 }
 
 .game-question{
-  width: 80%;
+  width: auto;
   margin-left: 5vw;
+}
+
+.game-header .game-image img {
+  margin-left: -20vw;
+  border-radius: 10px;
 }
