@@ -13,6 +13,8 @@ class Series extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
+    public $timestamps = false;
+
     public function media()
     {
         return $this->belongsTo('App\Models\Media', 'media_id');
