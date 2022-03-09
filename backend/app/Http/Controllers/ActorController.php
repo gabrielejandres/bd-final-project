@@ -55,10 +55,12 @@ class ActorController extends Controller
     // Question functions
     public function getActorPhotoQuestion() {
         // making the question
-        $question = 'Quem é o ator abaixo?';
+        $question = 'Quem é o ator da imagem?';
 
         // getting a valid answer
-        $answer = Actor::inRandomOrder()
+        $answer = Actor::whereNotNull('profile_photo')
+                        ->where('profile_photo', '!=', '')
+                        ->inRandomOrder()
                         ->first();
 
         $photo = $answer ? $answer->profile_photo : '';
