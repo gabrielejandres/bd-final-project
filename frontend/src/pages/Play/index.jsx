@@ -105,36 +105,74 @@ export default function Play(){
         break;
 
       case 5:
-      
+        response = await GameService.movieByPlatformQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 6:
-      
+        response = await GameService.oldestMovieQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 7:
-      
+        response = await GameService.oldestSeriesQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 8:
-      
+        response = await GameService.movieByGenreAndActorQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 9:
-      
+        response = await GameService.seriesWithMoreSeasonsQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 10:
-      
+        response = await GameService.platformWithMoreMediasQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 11:
-      
+        response = await GameService.directorWithMoreMoviesQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
 
       case 12:
-      
+        response = await GameService.directorAndActorQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
         break;
+
+      case 13:
+        response = await GameService.directorWithMoreMediasByGenreQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
+        break;
+
+      case 14:
+        response = await GameService.actorPhotoQuestion();
+        setQuestion(response.data.question)
+        setOptions(response.data.options)
+        setAnswer(response.data.answer)
+        break;    
     }
   }
 
@@ -150,7 +188,7 @@ export default function Play(){
 
     setTimeout(function(){
       setKey(prevKey => prevKey + 1);
-      setChoosedQuestion(Math.floor(Math.random()*4)+1)
+      setChoosedQuestion(Math.floor(Math.random()*14)+1)
       createQuestion(questionChoosed)
     }, 1000)
 
