@@ -4,20 +4,42 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { useNavigate } from 'react-router-dom';
 import UserService from '../../services/User/index.js';
 import GameService from '../../services/Game/index.js';
-import Loading from '../../components/Loading/index.jsx'
+import Loading from '../../components/Loading/index.jsx';
+import Modal from 'react-modal';
+import Button from '../../components/Button/index.jsx';
 
 export default function Play(){
 
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width: '30vw',
+      height: '20vh',
+      borderRadius: '10px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      textAlign: 'center',
+      alignItems: 'center'
+    },
+  };
+
   const navigate = useNavigate();
   const [score, setScore] = useState(0)
-  const [question, setQuestion] = useState('Você concorda que 1+1 é igual a 2?')
-  const [options, setOptions] = useState(['alo', 'teste', 'sim', 'não'])
+  const [question, setQuestion] = useState()
+  const [options, setOptions] = useState()
   const [answer, setAnswer] = useState('sim')
   const [time, setTime] = useState(30)
   const [clickedOnAnswer, setclickedOnAnswer] = useState(undefined)
   const [isClockRunning, setClockRunning] = useState(true)
   const [questionChoosed, setChoosedQuestion] = useState(Math.floor(Math.random()*4)+1)
   const [key, setKey] = useState(0)
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const checkAnswer = async (option) =>{
     if(option === answer && clickedOnAnswer == undefined){
@@ -39,9 +61,17 @@ export default function Play(){
       console.log(form)
       const response = await UserService.updateScore(localStorage.getItem('id'), form);
       console.log(response)
-      alert('Você perdeu!');
-      navigate('/home/ranking')
+      setIsOpen(true);
     }
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    navigate('/home/ranking')
   }
 
   const createQuestion = async (question)=>{
@@ -151,12 +181,21 @@ export default function Play(){
                     "score": score
                   }
                   const response = await UserService.updateScore(localStorage.getItem('id'), form);
-                  alert('O tempo acabou!');
-                  navigate('/home/ranking')
+                  setIsOpen(true);
               }}
             >
               {renderTime}
             </CountdownCircleTimer>
+
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              style={customStyles}
+              contentLabel="Example Modal"
+            >
+              <div>Você perdeu! Pontuação final: {score}</div>
+              <button className="button" onClick={closeModal} style={{'width': '12vw'}}>Ver Ranking</button>
+            </Modal>
           </div>
         </div>
         <div className="game-content">
