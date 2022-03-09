@@ -351,4 +351,56 @@ class MediaController extends Controller
             'answer' => $answer
         ]);
     }
+
+    public function getMovieByGenreAndActorQuestion() {
+        // making the question
+        $genre = Genre::select('id', 'name')
+                        ->inRandomOrder()
+                        ->limit(1)
+                        ->get()
+                        ->toArray();
+
+        $actor = Actor::select('id', 'name')
+                        ->inRandomOrder()
+                        ->limit(1)
+                        ->get()
+                        ->toArray();
+        $question = 'Qual filme é do gênero ' . $genre[0]['name'] . ' e teve o ator ' . $actor[0]['name'] . ' no elenco?';
+
+        // getting a valid answer
+        $answer = Media::select('media.name')
+                        ->join('genre_media', 'genre_media.media_id', '=', 'id')
+                        ->join('actor_media', 'actor_media.media_id', '=', 'id')
+                        ->join('movies', 'movies.media_id', '=', 'id')
+                        ->where('genre_media.genre_id', $genre[0]['id'])
+                        ->where('actor_media.actor_id', $actor[0]['id'])
+                        ->inRandomOrder()
+                        ->first();
+
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Media::select('media.name')
+                        ->join('genre_media', 'genre_media.media_id', '=', 'id')
+                        ->join('movies', 'movies.media_id', '=', 'id')
+                        ->where('genre_media.genre_id', '!=', $genre[0]['id'])
+                        ->inRandomOrder()
+                        ->limit(3)
+                        ->get();            
+
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
 }

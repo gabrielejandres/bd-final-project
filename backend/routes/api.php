@@ -90,7 +90,7 @@ Route::get('/question/notAMovie', [MediaController::class, 'getNotAMovieQuestion
 Route::get('/question/movieByPlatform', [MediaController::class, 'getMovieByPlatformQuestion']);
 Route::get('/question/oldestMovie', [MediaController::class, 'getOldestMovieQuestion']);
 Route::get('/question/oldestSeries', [MediaController::class, 'getOldestSeriesQuestion']);
-Route::get('/question/directorWithMoreMediasByGenre', [DirectorController::class, 'getDirectorWithMoreMediasByGenreQuestion']);
+Route::get('/question/movieByGenreAndActor', [MediaController::class, 'getMovieByGenreAndActorQuestion']);
 
 Route::get('/question/seriesWithMoreSeasons', [SeriesController::class, 'getSeriesWithMoreSeasonsQuestion']);
 Route::get('/question/numberOfSeasons', [SeriesController::class, 'getNumberOfSeasonsQuestion']);
@@ -99,8 +99,6 @@ Route::get('/question/platformWithMoreMedias', [PlatformController::class, 'getP
 
 Route::get('/question/directorWithMoreMovies', [DirectorController::class, 'getDirectorWithMoreMoviesQuestion']);
 Route::get('/question/directorAndActor', [DirectorController::class, 'getDirectorAndActorQuestion']);
-
-// To Do
-Route::get('/question/movieByGenreAndActor', [MediaController::class, 'getMovieByGenreAndActorQuestion']);
+Route::get('/question/directorWithMoreMediasByGenre', [DirectorController::class, 'getDirectorWithMoreMediasByGenreQuestion']);
 
 
