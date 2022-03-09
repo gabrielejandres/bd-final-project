@@ -163,6 +163,8 @@ export default function Play(){
         <div className="score-text">Pontos: {score}</div>
       </div>
       <div className="game-container">
+        { options ?
+        <>
         <div className="game-header">
           <div className="game-question">
             {question}
@@ -199,17 +201,18 @@ export default function Play(){
           </div>
         </div>
         <div className="game-content">
-          {options ? 
-          options.map((option) => {
-            return(
-              <div className="game-options" onClick={()=>{time != 0 && checkAnswer(option)}} style={{'backgroundColor': (clickedOnAnswer && option === answer) ? 'green' : '#F2F2F2'}}>
-                {option}
-              </div>
-            )
-            }) :
-            <Loading />
-          }
+          { options.map((option) => {
+              return(
+                <div className="game-options" onClick={()=>{time != 0 && checkAnswer(option)}} style={{'backgroundColor': (clickedOnAnswer && option === answer) ? 'green' : '#F2F2F2'}}>
+                  {option}
+                </div>
+              )
+            })} 
         </div>
+        </>
+        :
+            <Loading />
+        }
       </div>
     </div>
   )

@@ -12,7 +12,7 @@ export default{
             return response
 
         }catch(err){
-            alert('nao foi iniciar uma pergunta')
+            alert('nao foi possível iniciar uma pergunta')
         }
     },
 
@@ -22,7 +22,7 @@ export default{
             return response
 
         }catch(err){
-            alert('nao foi iniciar uma pergunta')
+            alert('nao foi possível iniciar uma pergunta')
         }
     },
 
@@ -32,7 +32,7 @@ export default{
             return response
 
         }catch(err){
-            alert('nao foi iniciar uma pergunta')
+            alert('nao foi possível iniciar uma pergunta')
         }
     },
 
@@ -42,7 +42,7 @@ export default{
             return response
 
         }catch(err){
-            alert('nao foi iniciar uma pergunta')
+            alert('nao foi possível iniciar uma pergunta')
         }
     },
 
