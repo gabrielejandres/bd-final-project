@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Director;
+use App\Models\Actor;
 
 class DirectorController extends Controller
 {
@@ -52,8 +53,8 @@ class DirectorController extends Controller
     	return response()->json(['Diretor deletado com sucesso']); 
     }
 
-     // Question functions
-     public function getDirectorWithMoreMoviesQuestion() {
+    // Question functions
+    public function getDirectorWithMoreMoviesQuestion() {
         // making the question
         $question = 'Qual diretor fez mais filmes?';
 
@@ -88,4 +89,40 @@ class DirectorController extends Controller
             'answer' => $answer
         ]);
     }
+
+    public function getDirectorAndActorQuestion() {
+        // making the question
+        $question = 'Qual desses diretores também é ator?';
+
+        // getting a valid answer
+        $answer = Director::select('name')
+                        ->whereIn('directors.name', Actor::select('name'))
+                        ->inRandomOrder()
+                        ->first();
+
+        $answer = $answer ? $answer->name : 'Nenhuma das opções';
+
+        // getting options
+        $options = Director::select('name')
+                            ->whereNotIn('directors.name', Actor::select('name'))
+                            ->inRandomOrder()
+                            ->limit(3)
+                            ->get();        
+        
+        $optionsArray = [];
+        for ($i = 0; $i < count($options); $i++) {
+            $optionsArray[$i] = $options[$i]->name;
+        }
+        array_push($optionsArray, $answer);
+
+        // randomizing options
+        shuffle($optionsArray);
+
+        return response()->json([
+            'question' => $question,
+            'options' => $optionsArray,
+            'answer' => $answer
+        ]);
+    }
+    
 }
