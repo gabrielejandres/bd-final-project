@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->integer('num_seasons');
             $table->unsignedBigInteger('media_id')->nullable()->primary();
-            $table->timestamps();
         });
 
         Schema::table('series', function (Blueprint $table) { 

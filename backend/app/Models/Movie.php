@@ -11,6 +11,8 @@ class Movie extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
+    public $timestamps = false;
+
     public $incrementing = false;
 
     public function media()

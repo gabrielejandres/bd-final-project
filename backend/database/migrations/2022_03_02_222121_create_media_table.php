@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->year('release_year');
-            $table->enum('parental_rating', ['PG-13', 'TV-MA', 'R', 'TV-14', 'TV-PG']);
+            $table->string('parental_rating');
             $table->longText('description');
-            $table->timestamps();
         });
     }
 

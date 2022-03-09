@@ -208,13 +208,13 @@ class MediaController extends Controller
 
         // getting a valid answer
         $answer = Media::select('name')
-                    ->join('movies', 'id', '=', 'media_id')
+                    ->join('series', 'id', '=', 'media_id')
                     ->inRandomOrder()
                     ->first();
 
         // getting options
         $options = Media::select('name')
-                        ->join('series', 'id', '=', 'media_id')
+                        ->join('movies', 'id', '=', 'media_id')
                         ->inRandomOrder()
                         ->limit(3)
                         ->get();

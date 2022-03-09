@@ -11,8 +11,11 @@ class Country extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    // protected $primaryKey = ['code', 'name', 'media_id'];
-    // public $incrementing = false;
+    public $timestamps = false;
+
+    protected $primaryKey = ['code', 'name', 'media_id'];
+    
+    public $incrementing = false;
 
     public function media()
     {

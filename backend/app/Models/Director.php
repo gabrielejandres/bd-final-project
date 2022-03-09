@@ -11,6 +11,8 @@ class Director extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
+    public $timestamps = false;
+
     public function medias()
     {
         return $this->belongsToMany('App\Models\Media');

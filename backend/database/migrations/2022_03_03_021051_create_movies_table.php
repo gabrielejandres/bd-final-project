@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->integer('duration');
             $table->unsignedBigInteger('media_id')->nullable()->primary();
-            $table->timestamps();
         });
 
         Schema::table('movies', function (Blueprint $table) { 
